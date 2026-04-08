@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1400, initial-scale=0.5, user-scalable=yes">
+    <title>Giới Thiệu - Thanh Food Phan Thiết</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #1a6b3c; --green-mid: #2d9653; --green-light: #4dc97c;
+            --green-pale: #e6f7ed; --teal-dark: #0e6b72; --teal-mid: #15a8b3;
+            --teal-light: #4dd4df; --teal-pale: #e0f7f9; --ocean-dark: #0a4a72;
+            --ocean-mid: #1275b8; --cream: #f4fbf6; --white: #ffffff;
+            --gray-soft: #f0f6f4; --text-dark: #133226; --text-mid: #2d5a42;
+            --text-light: #6a9e7e; --red-accent: #e85555; --yellow-accent: #f5c842;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; min-width: 1400px; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+
+        /* TOPBAR */
+        .topbar { background: linear-gradient(90deg, var(--green-dark), var(--teal-dark)); padding: 10px 0; font-size: 13px; color: rgba(255,255,255,0.92); }
+        .topbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .topbar-left, .topbar-right { display: flex; align-items: center; gap: 20px; }
+        .topbar a { color: rgba(255,255,255,0.85); text-decoration: none; }
+        .topbar a:hover { color: var(--yellow-accent); }
+
+        /* HEADER */
+        header { background: var(--white); position: sticky; top: 0; z-index: 999; box-shadow: 0 4px 24px rgba(21,168,179,0.12); border-bottom: 3px solid var(--green-light); }
+        .header-inner { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 28px; height: 90px; }
+        .logo img { height: 72px; object-fit: contain; }
+        .search-wrap { flex: 1; position: relative; }
+        .search-wrap input { width: 100%; padding: 14px 130px 14px 22px; border-radius: 50px; border: 2.5px solid #c5e8d4; background: var(--green-pale); font-size: 15px; font-family: 'Nunito', sans-serif; color: var(--text-dark); transition: all 0.3s; }
+        .search-wrap input:focus { outline: none; border-color: var(--green-mid); background: #fff; }
+        .search-wrap input::placeholder { color: var(--text-light); }
+        .search-wrap button { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, var(--green-mid), var(--teal-mid)); color: #fff; border: none; padding: 10px 24px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; }
+        .header-badges { display: flex; align-items: center; gap: 14px; }
+        .h-badge { display: flex; align-items: center; gap: 10px; background: var(--gray-soft); border-radius: 14px; padding: 10px 16px; border: 1.5px solid #d4efe0; }
+        .h-badge-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .h-badge-icon.red { background: #fff0f0; color: var(--red-accent); }
+        .h-badge-icon.yellow { background: #fffbea; color: #d4a00e; }
+        .h-badge small { display: block; color: var(--text-light); font-size: 11px; }
+        .h-badge strong { font-size: 13px; font-weight: 800; color: var(--text-dark); }
+        .h-badge .delivery { color: var(--green-mid); }
+        .btn-call { background: linear-gradient(135deg, var(--red-accent), #c73b3b); color: white; border: none; cursor: pointer; padding: 12px 24px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(232,85,85,0.35); transition: all 0.3s; white-space: nowrap; }
+        .btn-call:hover { transform: translateY(-2px); }
+
+        /* NAVBAR */
+        .navbar { background: linear-gradient(90deg, var(--green-dark) 0%, var(--teal-dark) 60%, var(--ocean-dark) 100%); position: relative; overflow: hidden; }
+        .navbar::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E"); }
+        .navbar-inner { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 6px; position: relative; }
+        .nav-item { color: rgba(255,255,255,0.9); padding: 15px 18px; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s; border-radius: 8px; white-space: nowrap; text-decoration: none; }
+        .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.18); color: var(--yellow-accent); }
+        .nav-hotline { margin-left: auto; color: var(--yellow-accent); font-weight: 800; font-size: 15px; display: flex; align-items: center; gap: 8px; animation: pulse-yellow 2s infinite; }
+        @keyframes pulse-yellow { 0%,100%{text-shadow:none} 50%{text-shadow:0 0 12px rgba(245,200,66,.6)} }
+
+        /* BREADCRUMB */
+        .breadcrumb-bar { background: #fff; border-bottom: 1px solid #e8f4ec; padding: 14px 0; }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+        .breadcrumb a { color: var(--text-light); text-decoration: none; display: flex; align-items: center; gap: 5px; }
+        .breadcrumb a:hover { color: var(--green-mid); }
+        .breadcrumb .sep { color: #c5e0d0; }
+        .breadcrumb .current { color: var(--green-dark); font-weight: 700; }
+
+        /* WAVE */
+        .wave-div { line-height: 0; overflow: hidden; }
+        .wave-div svg { display: block; }
+
+        /* HERO */
+        .about-hero {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--teal-dark) 40%, var(--ocean-dark) 100%);
+            padding: 80px 0; position: relative; overflow: hidden; min-height: 520px;
+            display: flex; align-items: center;
+        }
+        .about-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q25 0 50 10 Q75 20 100 10 L100 20 L0 20Z' fill='%234dc97c' fill-opacity='0.07'/%3E%3C/svg%3E") repeat-x;
+            background-size: 200px 40px; animation: wave-anim 8s linear infinite; pointer-events: none;
+        }
+        @keyframes wave-anim { 0%{background-position-x:0} 100%{background-position-x:200px} }
+        .hero-bubbles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+        .bubble { position: absolute; border-radius: 50%; background: rgba(77,201,124,0.1); animation: float-up 8s ease-in infinite; }
+        .bubble:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 50px; height: 50px; left: 25%; animation-delay: 2s; }
+        .bubble:nth-child(3) { width: 100px; height: 100px; left: 60%; animation-delay: 1s; }
+        .bubble:nth-child(4) { width: 40px; height: 40px; left: 80%; animation-delay: 3s; }
+        @keyframes float-up { 0%{transform:translateY(100%);opacity:0} 50%{opacity:.4} 100%{transform:translateY(-200px);opacity:0} }
+        .hero-inner { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero-text .tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(77,201,124,0.2); border: 1px solid rgba(77,201,124,0.4); color: var(--green-light); padding: 7px 18px; border-radius: 50px; font-size: 13px; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .hero-text h1 { font-family: 'Baloo 2', cursive; font-size: 52px; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 20px; }
+        .hero-text h1 span { color: var(--yellow-accent); }
+        .hero-text p { color: rgba(255,255,255,0.85); font-size: 17px; line-height: 1.8; margin-bottom: 32px; }
+        .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+        .btn-hero-primary { background: linear-gradient(135deg, var(--green-mid), var(--teal-mid)); color: #fff; border: none; cursor: pointer; padding: 15px 32px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px; display: flex; align-items: center; gap: 8px; box-shadow: 0 6px 24px rgba(45,150,83,0.4); transition: all 0.3s; text-decoration: none; }
+        .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(45,150,83,0.55); }
+        .btn-hero-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); cursor: pointer; padding: 15px 32px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 15px; display: flex; align-items: center; gap: 8px; transition: all 0.3s; text-decoration: none; }
+        .btn-hero-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; transform: translateY(-3px); }
+        .hero-image-wrap { position: relative; }
+        .hero-img-main { width: 100%; height: 380px; object-fit: cover; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); border: 4px solid rgba(255,255,255,0.15); }
+        .hero-img-badge { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); background: #fff; border-radius: 20px; padding: 16px 28px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); display: flex; gap: 28px; white-space: nowrap; }
+        .hero-img-badge .stat { text-align: center; }
+        .hero-img-badge .stat .num { font-family: 'Baloo 2', cursive; font-size: 26px; font-weight: 800; color: var(--green-dark); }
+        .hero-img-badge .stat .lbl { font-size: 11px; color: var(--text-light); }
+
+        /* STORY */
+        .story-section { padding: 100px 0 80px; background: #fff; }
+        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .story-imgs { position: relative; }
+        .story-img-1 { width: 75%; border-radius: 20px; box-shadow: 0 10px 40px rgba(21,100,60,0.18); border: 4px solid #e0f2e9; }
+        .story-img-2 { position: absolute; bottom: -30px; right: 0; width: 55%; border-radius: 16px; box-shadow: 0 10px 40px rgba(21,100,60,0.2); border: 4px solid var(--green-light); }
+        .story-badge { position: absolute; top: 20px; right: 0; background: linear-gradient(135deg, var(--yellow-accent), #e8b820); color: var(--text-dark); padding: 12px 20px; border-radius: 16px; font-weight: 800; font-size: 14px; box-shadow: 0 6px 20px rgba(245,200,66,0.4); text-align: center; }
+        .story-badge .y { font-family: 'Baloo 2', cursive; font-size: 28px; font-weight: 800; display: block; }
+        .story-text .section-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--green-pale); color: var(--green-dark); border: 1.5px solid #a8ddbf; padding: 5px 18px; border-radius: 50px; font-size: 12px; font-weight: 800; margin-bottom: 16px; text-transform: uppercase; }
+        .story-text h2 { font-family: 'Baloo 2', cursive; font-size: 40px; font-weight: 800; color: var(--text-dark); line-height: 1.2; margin-bottom: 20px; }
+        .story-text h2 span { color: var(--green-mid); }
+        .story-text p { color: var(--text-mid); line-height: 1.9; font-size: 15px; margin-bottom: 16px; }
+        .story-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+        .story-hl { display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: var(--green-pale); border-radius: 14px; border: 1px solid #c5e8d4; }
+        .story-hl i { font-size: 22px; color: var(--green-mid); flex-shrink: 0; margin-top: 2px; }
+        .story-hl strong { font-size: 14px; color: var(--green-dark); display: block; margin-bottom: 3px; }
+        .story-hl span { font-size: 12px; color: var(--text-light); }
+
+        /* VALUES */
+        .values-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--green-pale) 0%, var(--teal-pale) 100%);
+            position: relative; overflow: hidden;
+        }
+        .values-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q25 0 50 10 Q75 20 100 10 L100 20 L0 20Z' fill='%2315a8b3' fill-opacity='0.05'/%3E%3C/svg%3E") repeat-x;
+            background-size: 200px 40px; animation: wave-anim 10s linear infinite; pointer-events: none;
+        }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title .tag { display: inline-block; background: var(--green-pale); color: var(--green-dark); border: 1.5px solid #a8ddbf; padding: 5px 18px; border-radius: 50px; font-size: 13px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .section-title h2 { font-family: 'Baloo 2', cursive; font-size: 36px; font-weight: 800; color: var(--green-dark); position: relative; display: inline-block; }
+        .section-title h2::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); bottom: -8px; width: 60px; height: 4px; background: linear-gradient(90deg, var(--green-light), var(--teal-light)); border-radius: 2px; }
+        .section-title p { margin-top: 18px; color: var(--text-light); font-size: 15px; }
+        .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+        .val-card { background: #fff; border-radius: 22px; padding: 36px 24px; text-align: center; border: 2px solid transparent; box-shadow: 0 4px 18px rgba(21,100,60,0.08); transition: all 0.4s; cursor: default; }
+        .val-card:hover { transform: translateY(-10px); border-color: var(--green-light); box-shadow: 0 16px 48px rgba(21,150,80,0.18); }
+        .val-icon { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--green-pale), var(--teal-pale)); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 3px solid #c5e8d4; transition: all 0.4s; }
+        .val-card:hover .val-icon { background: linear-gradient(135deg, var(--green-mid), var(--teal-mid)); border-color: transparent; transform: rotate(10deg) scale(1.1); }
+        .val-card:hover .val-icon i { color: #fff !important; }
+        .val-icon i { font-size: 32px; color: var(--green-mid); transition: color 0.4s; }
+        .val-card h3 { font-family: 'Baloo 2', cursive; font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+        .val-card p { font-size: 14px; color: var(--text-light); line-height: 1.7; }
+
+        /* TIMELINE */
+        .timeline-section { padding: 80px 0; background: #fff; }
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--green-mid), var(--teal-mid)); }
+        .tl-item { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; margin-bottom: 48px; position: relative; }
+        .tl-item:nth-child(even) .tl-content { grid-column: 3; }
+        .tl-item:nth-child(even) .tl-dot { grid-column: 2; }
+        .tl-item:nth-child(even) .tl-empty { grid-column: 1; }
+        .tl-item:nth-child(odd) .tl-content { grid-column: 1; text-align: right; }
+        .tl-item:nth-child(odd) .tl-dot { grid-column: 2; }
+        .tl-item:nth-child(odd) .tl-empty { grid-column: 3; }
+        .tl-content { background: #fff; border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 18px rgba(21,100,60,0.1); border: 1.5px solid #e0f0e8; transition: all 0.3s; }
+        .tl-content:hover { box-shadow: 0 8px 32px rgba(21,150,80,0.18); transform: translateY(-3px); }
+        .tl-year { font-family: 'Baloo 2', cursive; font-size: 22px; font-weight: 800; color: var(--green-mid); margin-bottom: 6px; }
+        .tl-content h4 { font-family: 'Baloo 2', cursive; font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+        .tl-content p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+        .tl-dot { display: flex; align-items: center; justify-content: center; z-index: 2; }
+        .tl-dot-inner { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--green-mid), var(--teal-mid)); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; box-shadow: 0 4px 16px rgba(45,150,83,0.4); border: 4px solid #fff; }
+
+        /* TEAM */
+        .team-section { padding: 80px 0; background: linear-gradient(180deg, #e8f7ef, var(--cream)); }
+        .team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; }
+        .team-card { background: #fff; border-radius: 22px; overflow: hidden; text-align: center; box-shadow: 0 4px 18px rgba(21,100,60,0.08); border: 1.5px solid #e0f2e9; transition: all 0.4s; }
+        .team-card:hover { transform: translateY(-8px); box-shadow: 0 14px 40px rgba(21,150,80,0.18); border-color: var(--green-light); }
+        .team-img { height: 220px; overflow: hidden; background: linear-gradient(135deg, var(--green-pale), var(--teal-pale)); display: flex; align-items: center; justify-content: center; }
+        .team-img i { font-size: 80px; color: var(--green-mid); opacity: 0.4; }
+        .team-body { padding: 20px; }
+        .team-body h4 { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 5px; }
+        .team-body .role { font-size: 13px; color: var(--teal-mid); font-weight: 700; margin-bottom: 10px; }
+        .team-body p { font-size: 12px; color: var(--text-light); line-height: 1.6; }
+
+        /* CERT */
+        .cert-section { padding: 70px 0; background: #fff; }
+        .cert-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+        .cert-card { background: var(--green-pale); border-radius: 20px; padding: 28px 20px; text-align: center; border: 2px solid #c5e8d4; transition: all 0.3s; }
+        .cert-card:hover { border-color: var(--green-mid); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(21,150,80,0.15); background: #fff; }
+        .cert-card i { font-size: 40px; color: var(--green-mid); margin-bottom: 14px; }
+        .cert-card h4 { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+        .cert-card p { font-size: 12px; color: var(--text-light); }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 80px 0; position: relative; overflow: hidden;
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--teal-dark) 50%, var(--ocean-dark) 100%);
+        }
+        .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(77,201,124,0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(79,173,232,0.15) 0%, transparent 60%); }
+        .cta-inner { position: relative; text-align: center; color: #fff; }
+        .cta-inner h2 { font-family: 'Baloo 2', cursive; font-size: 44px; font-weight: 800; margin-bottom: 16px; }
+        .cta-inner h2 span { color: var(--yellow-accent); }
+        .cta-inner p { font-size: 17px; opacity: 0.85; margin-bottom: 36px; }
+        .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-cta-main { background: linear-gradient(135deg, var(--yellow-accent), #e8b820); color: var(--text-dark); border: none; cursor: pointer; padding: 16px 36px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 6px 24px rgba(245,200,66,0.45); transition: all 0.3s; text-decoration: none; }
+        .btn-cta-main:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(245,200,66,0.6); }
+        .btn-cta-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); cursor: pointer; padding: 16px 36px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 16px; display: flex; align-items: center; gap: 10px; transition: all 0.3s; text-decoration: none; }
+        .btn-cta-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; transform: translateY(-3px); }
+
+        /* FLOAT & BACK-TOP */
+        .float-bar { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 1000; display: flex; flex-direction: column; gap: 12px; }
+        .float-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: all 0.3s; cursor: pointer; text-decoration: none; position: relative; }
+        .float-btn:hover { transform: scale(1.15); }
+        .float-btn.zalo { background: linear-gradient(135deg, #0068FF, #0052cc); }
+        .float-btn.mess { background: linear-gradient(135deg, #00B2FF, #006AFF); }
+        .float-btn.tiktok { background: linear-gradient(135deg, #111, #333); }
+        .float-btn .tip { position: absolute; right: 64px; background: #333; color: #fff; padding: 5px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .float-btn:hover .tip { opacity: 1; }
+        .back-top { position: fixed; bottom: 30px; right: 22px; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--green-mid), var(--teal-mid)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; z-index: 999; box-shadow: 0 4px 16px rgba(45,150,83,0.4); transition: all 0.3s; text-decoration: none; }
+        .back-top:hover { transform: translateY(-4px); }
+
+        /* FOOTER */
+        footer { background: linear-gradient(180deg, #0e3a20, #091f12); color: #fff; }
+        .footer-inner { padding: 60px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 48px; }
+        .footer-brand img { height: 60px; margin-bottom: 16px; filter: brightness(0) invert(1); }
+        .footer-brand p { font-size: 13px; opacity: 0.75; line-height: 1.7; margin-bottom: 20px; }
+        .footer-socials { display: flex; gap: 10px; }
+        .social-btn { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; text-decoration: none; transition: all 0.3s; }
+        .social-btn:hover { background: var(--green-mid); transform: translateY(-3px); }
+        .footer-col h4 { font-family: 'Baloo 2', cursive; font-size: 17px; font-weight: 700; margin-bottom: 18px; color: var(--yellow-accent); }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
+        .footer-col ul li a:hover { color: var(--green-light); transform: translateX(4px); }
+        .footer-col ul li a i { font-size: 11px; color: var(--green-light); }
+        .footer-contact li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 12px; }
+        .footer-contact li i { color: var(--green-light); margin-top: 2px; flex-shrink: 0; }
+        .payment-icons { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pay-icon { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 7px 14px; font-size: 12px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 13px; opacity: 0.6; }
+
+        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        .fade-up { animation: fadeUp 0.6s ease both; }
+        .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.3s} .d4{animation-delay:.4s}
+    </style>
+</head>
+<body>
+
+<!-- Float -->
+<div class="float-bar">
+    <a href="https://zalo.me/0908881122" target="_blank" class="float-btn zalo"><i class="fa-solid fa-comment-dots"></i><span class="tip">Chat Zalo</span></a>
+    <a href="https://www.facebook.com/huynhba.thanh.7" class="float-btn mess"><i class="fa-brands fa-facebook-messenger"></i><span class="tip">Messenger</span></a>
+    <a href="#" class="float-btn tiktok"><i class="fa-brands fa-tiktok"></i><span class="tip">TikTok</span></a>
+</div>
+<a href="#" class="back-top"><i class="fa-solid fa-chevron-up"></i></a>
+
+<!-- Topbar -->
+<div class="topbar">
+    <div class="container">
+        <div class="topbar-left"><span><i class="fa-solid fa-location-dot"></i> 51 Lương Văn Năm, Phú Tài, TP. Phan Thiết, Bình Thuận</span></div>
+        <div class="topbar-right">
+            <span><i class="fa-solid fa-envelope"></i> thanhfood@gmail.com</span>
+            <span>|</span><a href="#"><i class="fa-solid fa-heart"></i> Yêu thích</a>
+            <span>|</span><a href="#"><i class="fa-solid fa-store"></i> Hệ thống cửa hàng</a>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <div class="logo"><a href="index.html"><img src="logo.jpg" alt="Thanh Food"></a></div>
+        <div class="search-wrap">
+            <input type="text" placeholder="🔍  Tìm kiếm sản phẩm: tôm, cua, cá viên...">
+            <button><i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm</button>
+        </div>
+        <div class="header-badges">
+            <div class="h-badge"><div class="h-badge-icon red"><i class="fa-regular fa-clock"></i></div><div><small>Thời gian làm việc</small><strong>8h – 21h</strong><small>Thứ 2 – Chủ Nhật</small></div></div>
+            <div class="h-badge"><div class="h-badge-icon yellow"><i class="fa-solid fa-truck-fast"></i></div><div><small>Tốc độ nhanh chóng</small><strong class="delivery">≤ Giao Hàng 2H</strong></div></div>
+            <button class="btn-call"><i class="fa-solid fa-phone"></i> 0908 881 122</button>
+        </div>
+    </div>
+</header>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> Trang chủ</a>
+        <a href="gioithieu.html" class="nav-item active"><i class="fa-solid fa-circle-info"></i> Giới thiệu</a>
+        <a href="danh-muc.html?cat=hai-san" class="nav-item"><i class="fa-solid fa-fish"></i> Hải sản đông lạnh</a>
+        <a href="danh-muc.html?cat=thit-dong-lanh" class="nav-item"><i class="fa-solid fa-drumstick-bite"></i> Thịt đông lạnh</a>
+        <a href="danh-muc.html?cat=xuc-xich" class="nav-item"><i class="fa-solid fa-hotdog"></i> Xúc xích & Chả</a>
+        <a href="danh-muc.html?cat=pho-mai" class="nav-item"><i class="fa-solid fa-cheese"></i> Phô mai & Bơ</a>
+        <a href="danh-muc.html" class="nav-item"><i class="fa-solid fa-box-open"></i> Tất cả sản phẩm</a>
+        <div class="nav-hotline"><i class="fa-solid fa-headset"></i> Hotline: 0908 881 122</div>
+    </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb-bar">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Trang chủ</a>
+            <span class="sep"><i class="fa-solid fa-chevron-right" style="font-size:10px"></i></span>
+            <span class="current">Giới thiệu về Thanh Food</span>
+        </div>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="about-hero">
+    <div class="hero-bubbles">
+        <div class="bubble"></div><div class="bubble"></div>
+        <div class="bubble"></div><div class="bubble"></div>
+    </div>
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-text fade-up">
+                <div class="tag"><i class="fa-solid fa-award"></i> Thương hiệu uy tín tại Phan Thiết</div>
+                <h1>Thanh Food —<br>Tươi Ngon <span>Mỗi Ngày</span></h1>
+                <p>Hơn 10 năm cung cấp thực phẩm đông lạnh chất lượng cao cho gia đình Phan Thiết. Chúng tôi cam kết mang đến những sản phẩm sạch, an toàn và tươi ngon nhất từ thiên nhiên đến bàn ăn của bạn.</p>
+                <div class="hero-cta">
+                    <a href="danh-muc.html" class="btn-hero-primary"><i class="fa-solid fa-box-open"></i> Xem sản phẩm</a>
+                    <a href="https://zalo.me/0908881122" target="_blank" class="btn-hero-outline"><i class="fa-solid fa-comment-dots"></i> Chat Zalo ngay</a>
+                </div>
+            </div>
+            <div class="hero-image-wrap fade-up d2">
+                <img src="banner.jpg" alt="Thanh Food" class="hero-img-main" onerror="this.style.background='linear-gradient(135deg,#2d9653,#15a8b3)';this.style.minHeight='380px'">
+                <div class="hero-img-badge">
+                    <div class="stat"><div class="num">10+</div><div class="lbl">Năm kinh nghiệm</div></div>
+                    <div class="stat"><div class="num">500+</div><div class="lbl">Khách hàng tin dùng</div></div>
+                    <div class="stat"><div class="num">22+</div><div class="lbl">Loại sản phẩm</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="wave-div"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" fill="#fff"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60Z"></path></svg></div>
+
+<!-- STORY -->
+<section class="story-section">
+    <div class="container">
+        <div class="story-grid">
+            <div class="story-imgs fade-up">
+                <img src="changa.jpg" alt="Câu chuyện Thanh Food" class="story-img-1" onerror="this.style.background='linear-gradient(135deg,#e6f7ed,#e0f7f9)';this.style.height='320px'">
+                <img src="canhga.jpg" alt="Sản phẩm Thanh Food" class="story-img-2" onerror="this.style.background='linear-gradient(135deg,#2d9653,#15a8b3)';this.style.height='220px'">
+                <div class="story-badge"><span class="y">10+</span>Năm<br>Kinh nghiệm</div>
+            </div>
+            <div class="story-text fade-up d2">
+                <div class="section-tag"><i class="fa-solid fa-book-open"></i> Câu chuyện của chúng tôi</div>
+                <h2>Từ Đam Mê Đến<br><span>Thương Hiệu Uy Tín</span></h2>
+                <p>Thanh Food được thành lập từ niềm đam mê với thực phẩm sạch và an toàn. Khởi nghiệp từ một cửa hàng nhỏ tại Phan Thiết, chúng tôi đã không ngừng phát triển và trở thành địa chỉ tin cậy cho hàng trăm gia đình tại Bình Thuận.</p>
+                <p>Với triết lý "Tươi ngon mỗi ngày", Thanh Food luôn đặt chất lượng sản phẩm lên hàng đầu. Mọi sản phẩm đều được tuyển chọn kỹ càng, đảm bảo vệ sinh an toàn thực phẩm theo tiêu chuẩn quốc tế.</p>
+                <div class="story-highlights">
+                    <div class="story-hl"><i class="fa-solid fa-leaf"></i><div><strong>100% Tươi sống</strong><span>Nguồn gốc rõ ràng, kiểm định kỹ</span></div></div>
+                    <div class="story-hl"><i class="fa-solid fa-snowflake"></i><div><strong>Chuỗi lạnh chuẩn</strong><span>Bảo quản từ kho đến tay bạn</span></div></div>
+                    <div class="story-hl"><i class="fa-solid fa-truck-fast"></i><div><strong>Giao hàng 2H</strong><span>Nhanh chóng, đúng giờ</span></div></div>
+                    <div class="story-hl"><i class="fa-solid fa-certificate"></i><div><strong>Chứng nhận ATTP</strong><span>Đạt chuẩn ISO 22000, HACCP</span></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="wave-div" style="background:#fff"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" fill="#e6f7ed"><path d="M0,0 C480,60 960,0 1440,40 L1440,60 L0,60Z"></path></svg></div>
+
+<!-- VALUES -->
+<section class="values-section">
+    <div class="container">
+        <div class="section-title fade-up">
+            <div class="tag"><i class="fa-solid fa-heart"></i> Giá trị cốt lõi</div>
+            <h2>Cam Kết Của Chúng Tôi</h2>
+            <p>Những giá trị mà Thanh Food luôn gìn giữ và phát huy</p>
+        </div>
+        <div class="values-grid">
+            <div class="val-card fade-up d1">
+                <div class="val-icon"><i class="fa-solid fa-shield-halved" style="color:var(--green-mid)"></i></div>
+                <h3>Chất Lượng<br>Đảm Bảo</h3>
+                <p>Mọi sản phẩm đều được kiểm tra chất lượng nghiêm ngặt trước khi đến tay khách hàng</p>
+            </div>
+            <div class="val-card fade-up d2">
+                <div class="val-icon"><i class="fa-solid fa-hand-holding-heart" style="color:var(--teal-mid)"></i></div>
+                <h3>Tận Tâm<br>Phục Vụ</h3>
+                <p>Đội ngũ tư vấn nhiệt tình, sẵn sàng hỗ trợ 24/7 để mang lại trải nghiệm tốt nhất</p>
+            </div>
+            <div class="val-card fade-up d3">
+                <div class="val-icon"><i class="fa-solid fa-recycle" style="color:var(--ocean-mid)"></i></div>
+                <h3>Bền Vững<br>Xanh Sạch</h3>
+                <p>Cam kết sử dụng bao bì thân thiện môi trường, góp phần bảo vệ thiên nhiên Việt Nam</p>
+            </div>
+            <div class="val-card fade-up d4">
+                <div class="val-icon"><i class="fa-solid fa-users" style="color:var(--green-mid)"></i></div>
+                <h3>Cộng Đồng<br>Gia Đình</h3>
+                <p>Xây dựng mối quan hệ lâu dài với khách hàng, coi mỗi gia đình như người thân của mình</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="wave-div" style="background:#e6f7ed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" fill="#fff"><path d="M0,40 C480,0 960,60 1440,20 L1440,60 L0,60Z"></path></svg></div>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+    <div class="container">
+        <div class="section-title fade-up">
+            <div class="tag"><i class="fa-solid fa-clock-rotate-left"></i> Hành trình phát triển</div>
+            <h2>Những Cột Mốc Đáng Nhớ</h2>
+            <p>Hành trình 10 năm xây dựng và phát triển thương hiệu Thanh Food</p>
+        </div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-content fade-up">
+                    <div class="tl-year">2014</div>
+                    <h4><i class="fa-solid fa-store" style="color:var(--green-mid)"></i> Khai trương cửa hàng đầu tiên</h4>
+                    <p>Thanh Food chính thức ra đời tại số 51 Lương Văn Năm, Phú Tài, Phan Thiết với quy mô nhỏ nhưng đầy nhiệt huyết.</p>
+                </div>
+                <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-store"></i></div></div>
+                <div class="tl-empty"></div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-empty"></div>
+                <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-fish"></i></div></div>
+                <div class="tl-content fade-up">
+                    <div class="tl-year">2016</div>
+                    <h4><i class="fa-solid fa-fish" style="color:var(--teal-mid)"></i> Mở rộng danh mục hải sản</h4>
+                    <p>Bổ sung dòng sản phẩm hải sản đông lạnh cao cấp, đáp ứng nhu cầu ngày càng cao của khách hàng Phan Thiết.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-content fade-up">
+                    <div class="tl-year">2018</div>
+                    <h4><i class="fa-solid fa-certificate" style="color:var(--green-mid)"></i> Đạt chứng nhận ATTP</h4>
+                    <p>Thanh Food được cấp chứng nhận An toàn Thực phẩm, khẳng định cam kết về chất lượng và vệ sinh sản phẩm.</p>
+                </div>
+                <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-certificate"></i></div></div>
+                <div class="tl-empty"></div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-empty"></div>
+                <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-truck-fast"></i></div></div>
+                <div class="tl-content fade-up">
+                    <div class="tl-year">2020</div>
+                    <h4><i class="fa-solid fa-truck-fast" style="color:var(--ocean-mid)"></i> Ra mắt dịch vụ giao hàng 2H</h4>
+                    <p>Triển khai dịch vụ giao hàng nhanh trong 2 giờ, mang sản phẩm tươi ngon đến tận tay khách hàng.</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-content fade-up">
+                    <div class="tl-year">2024</div>
+                    <h4><i class="fa-solid fa-star" style="color:var(--yellow-accent)"></i> Đạt 500+ khách hàng thân thiết</h4>
+                    <p>Cột mốc 500 khách hàng thân thiết — minh chứng cho sự tin tưởng và yêu mến của cộng đồng Phan Thiết.</p>
+                </div>
+                <div class="tl-dot"><div class="tl-dot-inner"><i class="fa-solid fa-star"></i></div></div>
+                <div class="tl-empty"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="cert-section">
+    <div class="container">
+        <div class="section-title fade-up">
+            <div class="tag"><i class="fa-solid fa-certificate"></i> Chứng nhận & Giải thưởng</div>
+            <h2>Tiêu Chuẩn Chất Lượng</h2>
+            <p>Thanh Food tự hào đạt nhiều chứng nhận chất lượng quốc tế</p>
+        </div>
+        <div class="cert-grid">
+            <div class="cert-card fade-up d1"><i class="fa-solid fa-shield-halved"></i><h4>ATTP</h4><p>An toàn thực phẩm Việt Nam, cấp bởi Sở Y tế Bình Thuận</p></div>
+            <div class="cert-card fade-up d2"><i class="fa-solid fa-award"></i><h4>ISO 22000</h4><p>Hệ thống quản lý an toàn thực phẩm tiêu chuẩn quốc tế</p></div>
+            <div class="cert-card fade-up d3"><i class="fa-solid fa-check-circle"></i><h4>HACCP</h4><p>Phân tích mối nguy và kiểm soát điểm tới hạn trong sản xuất thực phẩm</p></div>
+            <div class="cert-card fade-up d4"><i class="fa-solid fa-star"></i><h4>5 Sao</h4><p>Đánh giá 5 sao từ khách hàng trên các nền tảng thương mại điện tử</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-inner fade-up">
+            <h2>Sẵn Sàng Trải Nghiệm<br><span>Thanh Food Ngay Hôm Nay?</span></h2>
+            <p>Đặt hàng ngay để nhận ưu đãi giao hàng miễn phí nội thành Phan Thiết trong ngày hôm nay!</p>
+            <div class="cta-btns">
+                <a href="danh-muc.html" class="btn-cta-main"><i class="fa-solid fa-box-open"></i> Mua sắm ngay</a>
+                <a href="https://zalo.me/0908881122" target="_blank" class="btn-cta-outline"><i class="fa-solid fa-comment-dots"></i> Tư vấn qua Zalo</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Wave -->
+<div class="wave-div"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" fill="#0e3a20"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,20 1440,30 L1440,80 L0,80Z"></path></svg></div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="logo.jpg" alt="Thanh Food">
+                    <p>Thanh Food Phan Thiết – Chuyên cung cấp thực phẩm đông lạnh chất lượng cao. Cam kết tươi ngon, an toàn cho bữa ăn gia đình bạn.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Về Chúng Tôi</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Trang chủ</a></li>
+                        <li><a href="gioithieu.html"><i class="fa-solid fa-chevron-right"></i> Giới thiệu</a></li>
+                        <li><a href="danh-muc.html"><i class="fa-solid fa-chevron-right"></i> Sản phẩm</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Cẩm nang ẩm thực</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Chính Sách</h4>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Chính sách đổi trả</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Chính sách mua hàng</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Chính sách giao hàng</a></li>
+                        <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Bảo mật thông tin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Liên Hệ</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fa-solid fa-location-dot"></i> 51 Lương Văn Năm, Phú Tài, TP. Phan Thiết</li>
+                        <li><i class="fa-solid fa-phone"></i> 0908 881 122</li>
+                        <li><i class="fa-solid fa-envelope"></i> thanhfood@gmail.com</li>
+                        <li><i class="fa-regular fa-clock"></i> 8h – 21h (Thứ 2 – CN)</li>
+                    </ul>
+                    <h4 style="margin-top:12px">Thanh Toán</h4>
+                    <div class="payment-icons">
+                        <div class="pay-icon"><i class="fa-solid fa-money-bill"></i> Tiền mặt</div>
+                        <div class="pay-icon"><i class="fa-solid fa-credit-card"></i> Thẻ</div>
+                        <div class="pay-icon">VISA</div><div class="pay-icon">MOMO</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Thanh Food Phan Thiết – Thiết kế bởi <strong>VNS (VinaSoftware)</strong></p></div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
