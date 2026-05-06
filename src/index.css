@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Baloo+2:wght@400;500;600;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand palette (HSL) — converted from Thanh Food template */
+    --green-dark: 145 60% 26%;       /* #1a6b3c */
+    --green-mid: 142 54% 38%;        /* #2d9653 */
+    --green-light: 142 56% 55%;      /* #4dc97c */
+    --green-pale: 140 55% 94%;       /* #e6f7ed */
+    --teal-dark: 186 79% 25%;        /* #0e6b72 */
+    --teal-mid: 186 78% 39%;         /* #15a8b3 */
+    --teal-light: 186 65% 58%;       /* #4dd4df */
+    --teal-pale: 186 60% 93%;        /* #e0f7f9 */
+    --ocean-dark: 204 84% 24%;       /* #0a4a72 */
+    --ocean-mid: 204 82% 40%;        /* #1275b8 */
+    --cream: 120 50% 98%;            /* #f4fbf6 */
+    --gray-soft: 156 24% 95%;
+    --text-dark: 152 45% 14%;        /* #133226 */
+    --text-mid: 145 33% 26%;
+    --text-light: 142 22% 52%;
+    --red-accent: 0 76% 62%;         /* #e85555 */
+    --yellow-accent: 45 89% 62%;     /* #f5c842 */
+
+    /* Shadcn semantic tokens mapped to brand */
+    --background: var(--cream);
+    --foreground: var(--text-dark);
+    --card: 0 0% 100%;
+    --card-foreground: var(--text-dark);
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--text-dark);
+    --primary: var(--green-mid);
+    --primary-foreground: 0 0% 100%;
+    --secondary: var(--teal-mid);
+    --secondary-foreground: 0 0% 100%;
+    --muted: var(--gray-soft);
+    --muted-foreground: var(--text-light);
+    --accent: var(--green-pale);
+    --accent-foreground: var(--green-dark);
+    --destructive: var(--red-accent);
+    --destructive-foreground: 0 0% 100%;
+    --border: 145 30% 88%;
+    --input: 145 30% 88%;
+    --ring: var(--green-mid);
+    --radius: 0.875rem;
+
+    /* Gradients & shadows */
+    --gradient-brand: linear-gradient(135deg, hsl(var(--green-mid)), hsl(var(--teal-mid)));
+    --gradient-topbar: linear-gradient(90deg, hsl(var(--green-dark)), hsl(var(--teal-dark)));
+    --gradient-trust: linear-gradient(135deg, hsl(var(--green-dark)) 0%, hsl(var(--teal-dark)) 50%, hsl(var(--ocean-dark)) 100%);
+    --gradient-pale: linear-gradient(180deg, hsl(var(--green-pale)) 0%, hsl(var(--teal-pale)) 100%);
+    --gradient-footer: linear-gradient(180deg, #0e3a20 0%, #091f12 100%);
+    --shadow-soft: 0 4px 16px hsl(var(--green-dark) / 0.08);
+    --shadow-card: 0 8px 28px hsl(var(--green-dark) / 0.12);
+    --shadow-glow: 0 6px 24px hsl(var(--green-mid) / 0.35);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: var(--text-dark);
+    --sidebar-primary: var(--green-mid);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: var(--green-pale);
+    --sidebar-accent-foreground: var(--green-dark);
+    --sidebar-border: 145 30% 88%;
+    --sidebar-ring: var(--green-mid);
+  }
+
+  .dark {
+    --background: 152 40% 8%;
+    --foreground: 140 30% 95%;
+  }
+
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Nunito', sans-serif;
+  }
+  h1, h2, h3, h4 { font-family: 'Baloo 2', cursive; }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Baloo 2', cursive; }
+  .bg-gradient-brand { background: var(--gradient-brand); }
+  .bg-gradient-topbar { background: var(--gradient-topbar); }
+  .bg-gradient-trust { background: var(--gradient-trust); }
+  .bg-gradient-pale { background: var(--gradient-pale); }
+  .bg-gradient-footer { background: var(--gradient-footer); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.6s ease both; }
