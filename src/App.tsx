@@ -17,7 +17,16 @@ import AdminCategories from "./pages/admin/AdminCategories";
 import AdminRevenues from "./pages/admin/AdminRevenues";
 import AdminSettings from "./pages/admin/AdminSettings";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 2,
+      refetchOnMount: "always",
+      refetchOnWindowFocus: false,
+      staleTime: 30_000,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

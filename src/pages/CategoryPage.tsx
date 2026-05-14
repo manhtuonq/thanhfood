@@ -28,6 +28,7 @@ export default function CategoryPage() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["products-cat", slug, page],
+    enabled: true,
     queryFn: async () => {
       let q = supabase.from("products")
         .select("*, category:categories!inner(name,slug)", { count: "exact" })

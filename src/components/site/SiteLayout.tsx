@@ -1,6 +1,7 @@
 import { useSettings } from "@/hooks/useSettings";
 import logoFallback from "@/assets/logo.jpg";
 import { Link } from "react-router-dom";
+import { useTrackVisit } from "@/hooks/useTrackVisit";
 
 function Topbar() {
   const { data } = useSettings();
@@ -160,6 +161,7 @@ function FooterCol({ title, links }: { title: string; links: { l: string; h: str
 }
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
+  useTrackVisit();
   return (
     <div className="min-h-screen flex flex-col">
       <Topbar />
